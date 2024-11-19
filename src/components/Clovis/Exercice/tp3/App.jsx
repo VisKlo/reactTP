@@ -8,7 +8,7 @@ return (
     <BrowserRouter>
         <Navbar />
         <Routes>
-            <Route exact path="/" Component={Home} />
+            <Route path="/" Component={Home} />
             <Route path="/users" Component={Users} />
         </Routes>
     </BrowserRouter>

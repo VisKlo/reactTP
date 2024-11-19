@@ -2,32 +2,32 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export function Users() {
-    const [ data, setData] = useState([])
+    const [ users, setUsers] = useState([])
     const [ loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchUsers = async () => {
             try {
                 const response = await axios.get("https://jsonplaceholder.org/users")
-                setData(response.data)
+                setUsers(response.data)
                 setLoading(false)
 
             } catch (error) {
                 console.error(error)
             }
         }
-        fetchData()
+        fetchUsers()
     }, [])
 
     if(loading)
-        return (<p>Chargement en cours</p>)
+        return (<p>Chargement de la page</p>)
 
     return (
         <div>
             <h1>Listes des emails :</h1>
             <ul>
-                { data.map((item) => (
-                    <li key={item.id}>{item.email}</li>
+                { users.map((user) => (
+                    <li key={user.id}>{user.email}</li>
                 ))}
             </ul>
         </div>
